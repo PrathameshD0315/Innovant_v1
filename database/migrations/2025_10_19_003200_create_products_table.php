@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->string('path'); // "products/filename.jpg"
+            $table->string('original_name')->nullable();
+            $table->boolean('is_primary')->default(false);
             $table->timestamps();
         });
     }
